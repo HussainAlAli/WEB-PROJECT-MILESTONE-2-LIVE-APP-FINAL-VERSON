@@ -1,0 +1,1188 @@
+/* =========================================================
+   ChefLak Stylesheet
+   ---------------------------------------------------------
+   1) Base / Reset
+   2) Utilities
+   3) Navigation
+   4) Auth Page
+   5) Home Page
+   6) Cards
+   7) Modal / Booking / Payment / Success
+   8) Orders / About
+   9) Images (CSS Variables)
+  10) Card & Button Hover Effects
+  11) Footer
+  12) Responsive
+   ========================================================= */
+
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-soft: #eff6ff;
+  --danger: #ef4444;
+  --success: #16a34a;
+  --dark: #0f172a;
+  --radius: 18px;
+  --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* Base / Reset */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Tajawal', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+label {
+  display: block;
+  margin: 12px 0 8px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* Utilities */
+.hidden {
+  display: none !important;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.overlay-page.active {
+  display: flex;
+}
+
+.auth-form {
+  display: none;
+}
+
+.auth-form.active {
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.mt-12 {
+  margin-top: 12px;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Form Controls */
+.input,
+.input-row {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.input-row input {
+  border: 0;
+  padding: 14px;
+  flex: 1;
+}
+
+.prefix {
+  padding: 14px;
+  background: #f8fafc;
+  border-inline-end: 1px solid var(--line);
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: #ffffff;
+}
+
+.btn.outline {
+  background: #ffffff;
+  border: 1px solid var(--line);
+}
+
+.btn.dark {
+  background: var(--dark);
+  color: #ffffff;
+}
+
+/* Navigation */
+.navbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.nav-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon,
+.auth-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+}
+
+.auth-logo.small {
+  width: 64px;
+  height: 64px;
+  margin: auto;
+}
+
+.brand-text {
+  font-weight: 900;
+  font-size: 28px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-btn,
+.ghost-btn,
+.icon-btn {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+
+.nav-btn.active {
+  color: var(--primary);
+  border-color: #bfdbfe;
+  background: var(--primary-soft);
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+}
+
+.badge {
+  background: var(--danger);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-size: 12px;
+  margin-inline-start: 6px;
+}
+
+.floating-lang {
+  position: fixed;
+  top: 24px;
+  inset-inline-end: 24px;
+  z-index: 30;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 10px 16px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+/* Auth Page */
+.auth-page {
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  inset: 0;
+  padding: 24px;
+  background: var(--auth-bg-image) center / cover;
+}
+
+.auth-page.active {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+}
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 460px);
+  margin: auto;
+  padding: 32px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.auth-head {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-head h1 {
+  margin: 14px 0 6px;
+}
+
+.tabs {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 18px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.tab.active {
+  background: #ffffff;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+/* Home Page */
+.welcome-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 20px;
+  border-radius: var(--radius);
+  margin: 24px 0;
+}
+
+.welcome-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary);
+  display: grid;
+  place-items: center;
+}
+
+.welcome-count {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #ffffff;
+}
+
+.welcome-count strong {
+  font-size: 28px;
+  color: var(--primary);
+}
+
+.hero {
+  position: relative;
+  height: 360px;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 28px;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  color: #ffffff;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.25));
+}
+
+.pill {
+  display: inline-block;
+  width: max-content;
+  margin-bottom: 10px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.9);
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.section-head.between {
+  justify-content: space-between;
+}
+
+.bar {
+  width: 8px;
+  height: 28px;
+  background: var(--primary);
+  border-radius: 999px;
+}
+
+/* Cards */
+.chef-grid,
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.chef-card,
+.team-card,
+.order-card {
+  background: #ffffff;
+  border: 1px solid #eef2f7;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.chef-card {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chef-media {
+  position: relative;
+  height: 220px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.chef-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+}
+
+.rate-chip {
+  position: absolute;
+  top: 12px;
+  inset-inline-end: 12px;
+  z-index: 1;
+  background: #ffffff;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-weight: 800;
+}
+
+.chef-name {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 14px;
+  z-index: 1;
+  text-align: center;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.chef-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 8px 4px;
+  text-align: center;
+}
+
+.chef-meta {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.tags {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: var(--primary-soft);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.chef-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.price {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.price small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Modal / Booking / Payment / Success */
+.overlay-page {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(5px);
+}
+
+.overlay-page.white-bg {
+  background: #ffffff;
+}
+
+.modal,
+.pay-box,
+.success-box {
+  width: min(92vw, 720px);
+  max-height: 92vh;
+  overflow: auto;
+  background: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+}
+
+.pay-box,
+.success-box {
+  width: min(92vw, 460px);
+  padding: 28px;
+}
+
+.modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line);
+  background: #f8fafc;
+}
+
+.booking-chef {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px;
+}
+
+.booking-chef-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.booking-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+}
+
+.price-box {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  padding: 14px 16px;
+  border-radius: 18px;
+}
+
+.modal-body {
+  padding: 0 22px 22px;
+  background: #f8fafc;
+}
+
+.gallery-title {
+  margin-bottom: 10px;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.gallery {
+  display: flex;
+  gap: 10px;
+  overflow: auto;
+  padding-bottom: 6px;
+}
+
+.gallery-item {
+  width: 130px;
+  height: 84px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.hour-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.hour-btn {
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  border-radius: 14px;
+  font-weight: 800;
+}
+
+.hour-btn.selected {
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-color: #93c5fd;
+}
+
+.summary {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.border-top {
+  border-top: 1px dashed var(--line);
+}
+
+.total strong {
+  font-size: 28px;
+  color: var(--primary);
+}
+
+.back-link {
+  margin-bottom: 16px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.pay-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.amount-box {
+  margin-bottom: 16px;
+  padding: 18px;
+  border: 1px solid #dbeafe;
+  border-radius: 20px;
+  background: var(--primary-soft);
+  text-align: center;
+}
+
+.amount-box strong {
+  display: block;
+  font-size: 36px;
+  margin-top: 8px;
+}
+
+.error {
+  margin-bottom: 14px;
+  padding: 12px;
+  border: 1px solid #fecaca;
+  border-radius: 14px;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.success-box {
+  text-align: center;
+}
+
+.success-icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--success);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 36px;
+}
+
+.receipt {
+  margin: 16px 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #f8fafc;
+  text-align: start;
+}
+
+/* =====================================================
+   Orders & About Section
+===================================================== */
+
+.orders-page,
+.about-page {
+  padding: 48px 20px;
+}
+
+/* =====================================================
+   About Header Section
+===================================================== */
+
+.about-head {
+  max-width: 850px;
+  margin: 0 auto 50px;
+  padding: 40px 30px;
+
+  background: var(--card);
+  backdrop-filter: none;
+
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* حركة بسيطة عند المرور */
+.about-head:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.12),
+    0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* عنوان القسم */
+.about-head h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--dark);
+
+  margin-top: 18px;
+  margin-bottom: 20px;
+
+  position: relative;
+}
+
+/* خط تحت العنوان */
+.about-head h2::after {
+  content: "";
+
+  width: 70px;
+  height: 4px;
+
+  background: var(--primary);
+
+  border-radius: 999px;
+
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+/* وصف المنصة */
+.about-head p {
+  margin-top: 28px;
+
+  font-size: 1.05rem;
+  line-height: 2.1;
+
+  color: #4b5563;
+
+  text-align: center;
+
+  padding: 0 10px;
+}
+
+/* أيقونة القسم */
+.about-head .auth-logo.small {
+  width: 90px;
+  height: 90px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--primary);
+
+  color: white;
+  font-size: 34px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.count-pill {
+  background: var(--primary-soft);
+  color: var(--primary);
+
+  padding: 8px 14px;
+
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+/* =====================================================
+   Team Cards
+===================================================== */
+
+.team-card {
+  padding: 28px;
+  text-align: center;
+
+  border-radius: 22px;
+
+  background: white;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.team-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.team-avatar {
+  width: 96px;
+  height: 96px;
+
+  margin: 0 auto 16px;
+
+  border-radius: 50%;
+
+  border: 4px solid rgba(255, 179, 71, 0.3);
+
+  object-fit: cover;
+}
+
+/* =====================================================
+   Order Card
+===================================================== */
+
+.order-card {
+  position: relative;
+
+  margin-bottom: 20px;
+  padding: 24px;
+
+  border-radius: 20px;
+
+  background: white;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+
+  border-bottom: 1px solid #eef2f7;
+}
+
+/* حالة الطلب */
+.status-pill {
+  background: var(--primary-soft);
+  color: var(--primary);
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* Progress Bar */
+.progress {
+  height: 10px;
+
+  background: #e2e8f0;
+
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress > span {
+  display: block;
+
+  width: 33%;
+  height: 100%;
+
+  background: var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .hero {
+    height: 300px;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-strip,
+  .booking-chef,
+  .order-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chef-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-head {
+    padding: 30px 20px;
+  }
+
+  .about-head h2 {
+    font-size: 1.6rem;
+  }
+
+  .about-head p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    text-align: right;
+  }
+
+  .price {
+    font-size: 26px;
+  }
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: var(--hero-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.chef-photo,
+.booking-img,
+.gallery-item,
+.team-avatar {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Image mapping from CSS variables */
+.chef-photo-1 { background-image: var(--chef-1-image); }
+.booking-chef-1 { background-image: var(--chef-1-image); }
+.gallery-chef-1-1 { background-image: var(--chef-1-gallery-1); }
+.gallery-chef-1-2 { background-image: var(--chef-1-gallery-2); }
+.chef-photo-2 { background-image: var(--chef-2-image); }
+.booking-chef-2 { background-image: var(--chef-2-image); }
+.gallery-chef-2-1 { background-image: var(--chef-2-gallery-1); }
+.gallery-chef-2-2 { background-image: var(--chef-2-gallery-2); }
+.chef-photo-3 { background-image: var(--chef-3-image); }
+.booking-chef-3 { background-image: var(--chef-3-image); }
+.gallery-chef-3-1 { background-image: var(--chef-3-gallery-1); }
+.gallery-chef-3-2 { background-image: var(--chef-3-gallery-2); }
+.chef-photo-4 { background-image: var(--chef-4-image); }
+.booking-chef-4 { background-image: var(--chef-4-image); }
+.gallery-chef-4-1 { background-image: var(--chef-4-gallery-1); }
+.gallery-chef-4-2 { background-image: var(--chef-4-gallery-2); }
+.chef-photo-5 { background-image: var(--chef-5-image); }
+.booking-chef-5 { background-image: var(--chef-5-image); }
+.gallery-chef-5-1 { background-image: var(--chef-5-gallery-1); }
+.gallery-chef-5-2 { background-image: var(--chef-5-gallery-2); }
+.chef-photo-6 { background-image: var(--chef-6-image); }
+.booking-chef-6 { background-image: var(--chef-6-image); }
+.gallery-chef-6-1 { background-image: var(--chef-6-gallery-1); }
+.gallery-chef-6-2 { background-image: var(--chef-6-gallery-2); }
+.team-avatar-1 { background-image: var(--team-1-image); }
+.team-avatar-2 { background-image: var(--team-2-image); }
+.team-avatar-3 { background-image: var(--team-3-image); }
+.team-avatar-4 { background-image: var(--team-4-image); }
+
+#page-booking[data-chef-id="1"] .booking-img { background-image: var(--chef-1-image); }
+#page-booking[data-chef-id="2"] .booking-img { background-image: var(--chef-2-image); }
+#page-booking[data-chef-id="3"] .booking-img { background-image: var(--chef-3-image); }
+#page-booking[data-chef-id="4"] .booking-img { background-image: var(--chef-4-image); }
+#page-booking[data-chef-id="5"] .booking-img { background-image: var(--chef-5-image); }
+#page-booking[data-chef-id="6"] .booking-img { background-image: var(--chef-6-image); }
+
+#page-booking[data-chef-id="1"] .gallery-item-1 { background-image: var(--chef-1-gallery-1); }
+#page-booking[data-chef-id="1"] .gallery-item-2 { background-image: var(--chef-1-gallery-2); }
+#page-booking[data-chef-id="2"] .gallery-item-1 { background-image: var(--chef-2-gallery-1); }
+#page-booking[data-chef-id="2"] .gallery-item-2 { background-image: var(--chef-2-gallery-2); }
+#page-booking[data-chef-id="3"] .gallery-item-1 { background-image: var(--chef-3-gallery-1); }
+#page-booking[data-chef-id="3"] .gallery-item-2 { background-image: var(--chef-3-gallery-2); }
+#page-booking[data-chef-id="4"] .gallery-item-1 { background-image: var(--chef-4-gallery-1); }
+#page-booking[data-chef-id="4"] .gallery-item-2 { background-image: var(--chef-4-gallery-2); }
+#page-booking[data-chef-id="5"] .gallery-item-1 { background-image: var(--chef-5-gallery-1); }
+#page-booking[data-chef-id="5"] .gallery-item-2 { background-image: var(--chef-5-gallery-2); }
+#page-booking[data-chef-id="6"] .gallery-item-1 { background-image: var(--chef-6-gallery-1); }
+#page-booking[data-chef-id="6"] .gallery-item-2 { background-image: var(--chef-6-gallery-2); }
+
+#team-container .team-card:nth-child(1) .team-avatar { background-image: var(--team-1-image); }
+#team-container .team-card:nth-child(2) .team-avatar { background-image: var(--team-2-image); }
+#team-container .team-card:nth-child(3) .team-avatar { background-image: var(--team-3-image); }
+#team-container .team-card:nth-child(4) .team-avatar { background-image: var(--team-4-image); }
+
+/* =====================================================
+   Card Hover Effects
+===================================================== */
+
+.card,
+.chef-card,
+.team-card,
+.order-card,
+.service-card,
+.menu-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.card:hover,
+.chef-card:hover,
+.team-card:hover,
+.order-card:hover,
+.service-card:hover,
+.menu-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.10);
+
+  border-color: rgba(139, 92, 246, 0.25);
+}
+
+/* =====================================================
+   Book Now Button Hover
+===================================================== */
+
+.book-btn:hover {
+  background: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
+
+/* =====================================================
+   Footer
+   ===================================================== */
+
+.site-footer {
+  background-color: var(--bg);
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+  padding: 48px 20px 32px;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-title {
+  color: var(--dark);
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.footer-desc {
+  color: #4b5563;
+  line-height: 1.8;
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.footer-social-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer-social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+.footer-social-btn i {
+  font-size: 1.1rem;
+}
+
+.footer-social-btn--instagram { color: #E1306C; }
+.footer-social-btn--twitter   { color: #1DA1F2; }
+.footer-social-btn--whatsapp  { color: #25D366; }
+.footer-social-btn--email     { color: var(--primary); }
+
+.footer-copy {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+@media (max-width: 760px) {
+  .footer-links {
+    gap: 10px;
+  }
+
+  .footer-social-btn {
+    padding: 9px 16px;
+    font-size: 0.85rem;
+  }
+
+  .footer-title {
+    font-size: 1.2rem;
+  }
+}

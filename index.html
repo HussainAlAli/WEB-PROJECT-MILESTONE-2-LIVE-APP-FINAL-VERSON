@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChefLak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+  <div id="image-sources" class="hidden"
+    data-hero-image="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1600&q=80"
+    data-auth-bg-image="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80"
+    data-chef-1-image="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/5f476a79-8598-4c0c-89d9-3dd7ec013d66.png"
+    data-chef-2-image="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/465533eb-ac4e-40ca-9ec1-255eac903471.png"
+    data-chef-3-image="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/63b82cc0-bc3f-44d7-b616-5b907321918b.png"
+    data-chef-4-image="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/b8fb4a27-f322-4bb0-a8f3-52aab557469b.png"
+    data-chef-5-image="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/ea5ab4c0-d017-40d5-9ff3-7e500f79d94f.png"
+    data-chef-6-image="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/7d079eb8-f03a-453c-a17d-8d98d0605f5d.png"
+    data-chef-1-gallery-1="https://images.unsplash.com/photo-1626200419199-391ae4be7a41?auto=format&fit=crop&w=300&q=80"
+    data-chef-1-gallery-2="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&q=80"
+    data-chef-2-gallery-1="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=300&q=80"
+    data-chef-2-gallery-2="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=300&q=80"
+    data-chef-3-gallery-1="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=300&q=80"
+    data-chef-3-gallery-2="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=300&q=80"
+    data-chef-4-gallery-1="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=300&q=80"
+    data-chef-4-gallery-2="https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&w=300&q=80"
+    data-chef-5-gallery-1="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300&q=80"
+    data-chef-5-gallery-2="https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=300&q=80"
+    data-chef-6-gallery-1="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80"
+    data-chef-6-gallery-2="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=300&q=80"
+    data-team-1-image="https://ui-avatars.com/api/?name=Ahmed%20Al%20Qaisoum&background=2563EB&color=fff&size=200"
+    data-team-2-image="https://ui-avatars.com/api/?name=Hussein%20Al%20Ali&background=1D4ED8&color=fff&size=200"
+    data-team-3-image="https://ui-avatars.com/api/?name=Sultan%20Al%20Khalaf&background=3B82F6&color=fff&size=200"
+    data-team-4-image="https://ui-avatars.com/api/?name=Fares%20Al%20Dahesh&background=1E3A8A&color=fff&size=200">
+  </div>
+
+  <!-- Main app wrapper -->
+  <div id="app">
+
+    <!-- Top navigation shown after login -->
+    <!-- Navigation Bar -->
+<nav id="main-nav" class="navbar hidden">
+      <div class="container nav-wrap">
+        <button class="brand" data-nav="page-home">
+          <span class="brand-icon"><i class="fa-solid fa-bell-concierge"></i></span>
+          <span class="brand-text">ChefLak</span>
+        </button>
+        <div class="nav-actions">
+          <button class="nav-btn" data-nav="page-home" data-i18n="nav_home">الرئيسية</button>
+          <button class="nav-btn" data-nav="page-orders"><span data-i18n="nav_orders">الطلبات</span><span id="nav-order-count" class="badge hidden">0</span></button>
+          <button class="nav-btn" data-nav="page-about" data-i18n="nav_about">عن المنصة</button>
+          <button id="lang-btn" class="ghost-btn">English</button>
+          <button id="logout-btn" class="icon-btn"><i class="fa-solid fa-arrow-right-from-bracket rtl-flip"></i></button>
+        </div>
+      </div>
+    </nav>
+
+    <button id="login-lang-btn" class="floating-lang">English</button>
+
+
+    <!-- Login / Register page -->
+    <section id="page-login" class="page active auth-page">
+      <div class="auth-overlay"></div>
+      <div class="auth-card">
+        <div class="auth-head">
+          <div class="auth-logo"><i class="fa-solid fa-bell-concierge"></i></div>
+          <h1>ChefLak</h1>
+          <p data-i18n="login_subtitle">احجز نخبة الطهاة في المنطقة الشرقية</p>
+        </div>
+        <div class="tabs">
+          <button id="tab-login" class="tab active" data-auth="login" data-i18n="tab_login">دخول</button>
+          <button id="tab-register" class="tab" data-auth="register" data-i18n="tab_register">تسجيل</button>
+        </div>
+
+        <form id="form-login" class="auth-form active">
+          <label data-i18n="phone_label">رقم الجوال</label>
+          <div class="input-row"><span class="prefix">+966</span><input id="login-phone" type="tel" placeholder="5xxxxxxxx" /></div>
+          <label data-i18n="password_label">الرقم السري</label>
+          <div class="input-row"><input id="login-password" type="password" placeholder="••••••••" /></div>
+          <button class="btn primary w-full" type="submit" data-i18n="btn_signin">تسجيل الدخول</button>
+          <button id="demo-btn" class="btn outline w-full mt-12" type="button" data-i18n="btn_demo">تعبئة بيانات التجربة (0512345678)</button>
+        </form>
+
+        <form id="form-register" class="auth-form">
+          <label data-i18n="name_label">الاسم الكامل</label>
+          <input id="reg-name" class="input" type="text" placeholder="Hussain AlAli" />
+          <label data-i18n="phone_label">رقم الجوال</label>
+          <div class="input-row"><span class="prefix">+966</span><input id="reg-phone" type="tel" placeholder="5xxxxxxxx" /></div>
+          <label data-i18n="city_label">المدينة</label>
+          <select id="reg-city" class="input"><option value="Dammam">الدمام</option><option value="Khobar">الخبر</option><option value="Dhahran">الظهران</option></select>
+          <label data-i18n="password_label">الرقم السري</label>
+          <input id="reg-password" class="input" type="password" placeholder="••••••••" />
+          <button class="btn primary w-full" type="submit" data-i18n="btn_register">إنشاء الحساب</button>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- Home page with chef cards -->
+    <section id="page-home" class="page home-page container">
+      <div class="welcome-strip">
+        <div class="welcome-user">
+          <div class="avatar"><i class="fa-solid fa-user"></i></div>
+          <div><p class="muted" data-i18n="welcome_back">أهلاً بك،</p><h2 id="welcome-msg">User</h2></div>
+        </div>
+        <div class="welcome-count"><span data-i18n="total_bookings">إجمالي الطلبات</span><strong id="home-order-count">0</strong></div>
+      </div>
+
+      <div class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-overlay">
+          <span class="pill" data-i18n="saudi_experience">تجربة طهي أصيلة</span>
+          <h2 data-i18n="hero_title">ارتقِ بتجربة تناول الطعام</h2>
+          <p data-i18n="hero_subtitle">احجز أفضل الطهاة الخاصين في المنطقة الشرقية لمناسبتك القادمة.</p>
+        </div>
+      </div>
+
+      <div class="section-head"><span class="bar"></span><h3 data-i18n="home_title">اكتشف الطهاة</h3></div>
+      <div id="chefs-container" class="chef-grid"></div>
+    </section>
+
+
+    <!-- Booking modal page -->
+    <section id="page-booking" class="page overlay-page">
+      <div class="modal">
+        <div class="modal-top"><h3 data-i18n="private_dining">تفاصيل الحجز</h3><button class="icon-btn" data-nav="page-home"><i class="fa-solid fa-xmark"></i></button></div>
+        <div class="booking-chef">
+          <div class="booking-chef-info"><div id="booking-chef-img" class="booking-img" aria-hidden="true"></div><div><h2 id="booking-chef-name"></h2><p>⭐ <span id="booking-rating"></span></p></div></div>
+          <div class="price-box"><span data-i18n="rate_label">سعر الساعة</span><strong><span id="booking-rate"></span> <small data-i18n="currency">ر.س</small></strong></div>
+        </div>
+        <div class="modal-body">
+          <div class="gallery-title" data-i18n="gallery_title">الأطباق المميزة</div>
+          <div id="booking-gallery" class="gallery"><div class="gallery-item gallery-item-1"></div><div class="gallery-item gallery-item-2"></div></div>
+          <div class="two-col mt-16">
+            <div><label data-i18n="date_label">التاريخ</label><input id="booking-date" class="input" type="date"></div>
+            <div><label data-i18n="time_label">الوقت</label><input class="input" type="time"></div>
+          </div>
+          <div class="mt-16"><label data-i18n="address_label">العنوان</label><input id="address-placeholder" class="input" type="text" placeholder="المدينة، الشارع..."></div>
+          <div class="gallery-title mt-16" data-i18n="duration_label">المدة</div>
+          <div class="hour-grid">
+            <button class="hour-btn" data-hours="2">2</button>
+            <button class="hour-btn selected" data-hours="4">4</button>
+            <button class="hour-btn" data-hours="6">6</button>
+            <button class="hour-btn" data-hours="8">8</button>
+          </div>
+          <div class="summary mt-16">
+            <div class="row"><span id="calc-breakdown">4 × 150</span><span id="calc-subtotal">600</span></div>
+            <div class="row border-top"><span data-i18n="service_fee">رسوم الخدمة</span><span>30 <span data-i18n="currency">ر.س</span></span></div>
+            <div class="row total"><span data-i18n="total_label">الإجمالي</span><strong><span id="calc-total">630</span> <small data-i18n="currency">ر.س</small></strong></div>
+          </div>
+          <div id="booking-error" class="error hidden"></div><button id="proceed-btn" class="btn primary w-full mt-16" data-i18n="btn_proceed">إتمام الدفع</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Payment page -->
+    <section id="page-payment" class="page overlay-page white-bg">
+      <div class="pay-box">
+        <button class="back-link" data-nav="page-booking"><i class="fa-solid fa-arrow-right rtl-flip"></i> <span data-i18n="cancel_return">رجوع</span></button>
+        <div class="pay-head"><h2 data-i18n="secure_payment">الدفع</h2></div>
+        <div class="amount-box"><span data-i18n="total_due">المبلغ المطلوب</span><strong><span id="payment-total">630</span> <small data-i18n="currency">ر.س</small></strong></div>
+        <div id="pay-error" class="error hidden"><span id="pay-error-text"></span></div>
+        <form id="payment-form">
+          <label data-i18n="card_number">رقم البطاقة</label><input id="pay-card" class="input" type="text" placeholder="0000 0000 0000 0000">
+          <div class="two-col mt-16"><div><label data-i18n="expiry_date">الانتهاء</label><input id="pay-expiry" class="input" type="text" placeholder="MM/YY"></div><div><label data-i18n="cvv_code">CVV</label><input id="pay-cvv" class="input" type="password" placeholder="123"></div></div>
+          <button class="btn dark w-full mt-16" type="submit" data-i18n="btn_pay">ادفع الآن</button>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- Success confirmation page -->
+    <section id="page-success" class="page overlay-page white-bg">
+      <div class="success-box">
+        <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+        <h2 data-i18n="booking_confirmed">تم التأكيد!</h2>
+        <p data-i18n="success_msg">الشيف جاهز لخدمتك في مناسبتك.</p>
+        <div class="receipt"><div class="row"><span data-i18n="ref_number">المرجع</span><strong id="success-ref">CL-0000</strong></div><div class="row"><span data-i18n="chef_name">الشيف</span><strong id="success-chef"></strong></div><div class="row"><span data-i18n="total_paid">المدفوع</span><strong id="success-paid"></strong></div></div>
+        <button class="btn primary w-full" data-nav="page-orders" data-i18n="go_orders">عرض الطلب</button>
+        <button class="btn outline w-full mt-12" data-nav="page-home" data-i18n="back_home">الرئيسية</button>
+      </div>
+    </section>
+
+
+    <!-- Orders history page -->
+    <section id="page-orders" class="page container orders-page">
+      <div class="section-head between"><h2 data-i18n="my_bookings">طلباتي</h2><div class="count-pill"><span id="page-order-count">0</span></div></div>
+      <div id="orders-container"></div>
+    </section>
+
+
+    <!-- About page -->
+    <section id="page-about" class="page container about-page">
+      <div class="about-head"><div class="auth-logo small"><i class="fa-solid fa-bell-concierge"></i></div><h2 data-i18n="about_title">عن شيف لك</h2><p data-i18n="about_desc">"شيف لك" منصة متخصصة تربط العملاء بطهاة محترفين لتقديم تجارب طهي مميزة في المنازل والمناسبات الخاصة. نستهدف الأفراد، العائلات، والفعاليات، ونوفر إمكانية حجز طهاة متخصصين في مختلف أنواع الأطباق، مع تجربة حجز سهلة وسريعة تلبي احتياجات العملاء بكفاءة. نخدم حالياً المنطقة الشرقية، وتشمل: الدمام، الخبر، الظهران، بالإضافة إلى بعض المناطق القريبة، وذلك حسب توفر الطهاة</p></div>
+      <div id="team-container" class="team-grid"></div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+
+        <!-- =====================================================
+    Footer Section
+    ===================================================== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <h3 class="footer-title" data-i18n="footer_contact">تواصل معنا</h3>
+            <p class="footer-desc" data-i18n="footer_desc">
+                نحن في "شيف لك" نسعد بتواصلك معنا. يمكنك متابعة أحدث أخبارنا وعروضنا وتجارب الطهي المميزة عبر حساباتنا على وسائل التواصل الاجتماعي، أو مراسلتنا مباشرة لأي استفسار.
+            </p>
+            <div class="footer-links">
+                <a href="https://instagram.com/" target="_blank" class="footer-social-btn footer-social-btn--instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span data-i18n="footer_instagram">انستقرام</span>
+                </a>
+                <a href="https://twitter.com/" target="_blank" class="footer-social-btn footer-social-btn--twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                    <span data-i18n="footer_twitter">تويتر</span>
+                </a>
+                <a href="https://wa.me/966500000000" target="_blank" class="footer-social-btn footer-social-btn--whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span data-i18n="footer_whatsapp">واتساب</span>
+                </a>
+                <a href="mailto:Support@cheflk.com" class="footer-social-btn footer-social-btn--email">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span data-i18n="footer_email">البريد</span>
+                </a>
+            </div>
+            <p class="footer-copy" data-i18n="footer_copy">
+                &copy; 2026 منصة شيف لك. جميع الحقوق محفوظة.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
